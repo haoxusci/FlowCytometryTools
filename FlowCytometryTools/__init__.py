@@ -5,8 +5,8 @@ from FlowCytometryTools._doc import __doc__
 
 from fcsparser.api import parse as parse_fcs
 
-from FlowCytometryTools.core.containers import (FCMeasurement, FCCollection, FCOrderedCollection,
-                                                FCPlate)
+from FlowCytometryTools.core.containers import (FCMeasurement, FCCollection,
+    FCOrderedCollection, FCPlate)
 from FlowCytometryTools.core.gates import ThresholdGate, IntervalGate, QuadGate, PolyGate
 import FlowCytometryTools.core.graph as graph
 from FlowCytometryTools.core.graph import plotFCM

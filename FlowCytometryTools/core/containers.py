@@ -12,8 +12,8 @@ from fcsparser import parse as parse_fcs
 from pandas import DataFrame
 
 import FlowCytometryTools.core.graph as graph
-from FlowCytometryTools.core.bases import (Measurement, MeasurementCollection, OrderedCollection,
-                                           queueable)
+from FlowCytometryTools.core.bases import (Measurement, MeasurementCollection,
+    OrderedCollection, queueable)
 from FlowCytometryTools.core.common_doc import doc_replacer
 from FlowCytometryTools.core.graph import plot_ndpanel
 from FlowCytometryTools.core.transforms import Transformation
