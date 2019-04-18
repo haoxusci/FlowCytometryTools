@@ -17,6 +17,7 @@ TODO:
 from __future__ import division
 
 import warnings
+import numpy
 
 from numpy import (log, log10, exp, where, sign, vectorize, min, max, linspace, logspace, r_, abs,
                    asarray)
@@ -189,7 +190,15 @@ def _x_for_spln(x, nx, log_spacing):
             x_spln = r_[0, logspace(-1, lxmax, nx - 1)]
         else:  # (xmin < 0)
             f = lxmin / (lxmin + lxmax)
-            nx_neg = int(f * nx)
+            try:
+                if numpy.isnan(f):
+                    nx_neg = 0
+                else:
+                    nx_neg = int(f * nx)
+            except:
+                print("**********************")
+                print("error in transform.py")
+                print("**********************")
             nx_pos = nx - nx_neg
 
             if nx <= 1:
