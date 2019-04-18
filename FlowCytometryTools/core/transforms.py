@@ -192,6 +192,9 @@ def _x_for_spln(x, nx, log_spacing):
             f = lxmin / (lxmin + lxmax)
             try:
                 if numpy.isnan(f):
+                    print("**********************")
+                    print(f)
+                    print("**********************")
                     nx_neg = 0
                 else:
                     nx_neg = int(f * nx)

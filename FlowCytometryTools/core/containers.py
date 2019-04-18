@@ -124,7 +124,10 @@ class FCMeasurement(Measurement):
 
         channel_names = to_list(channel_names)
         gates = to_list(gates)
-
+        self.data = self.data.replace(np.nan, 0)
+        #print("*****************************************")
+        #print(self.data)
+        #print("*****************************************")
         plot_output = graph.plotFCM(self.data, channel_names, kind=kind, **kwargs)
 
         if gates is not None:
