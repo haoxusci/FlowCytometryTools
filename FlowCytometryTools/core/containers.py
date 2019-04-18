@@ -258,6 +258,7 @@ class FCMeasurement(Measurement):
                     # (this is fragile code)
                     ranges = [float(r['$PnR']) for i, r in channel_meta.iterrows() if
                               self.channel_names[i - 1] in channels]
+
                     if not np.allclose(ranges, ranges[0]):
                         raise Exception("""Not all specified channels have the same data range,
                             therefore they cannot be transformed together.\n
@@ -270,7 +271,13 @@ class FCMeasurement(Measurement):
                         kwargs['d'] = np.log10(ranges[0])
             transformer = Transformation(transform, direction, args, **kwargs)
         ## create new data
+        if use_spln:
+            xmax = self.apply(lambda x: x[channels].max().max(), applyto='data').max().max()
+            xmin = self.apply(lambda x: x[channels].min().min(), applyto='data').min().min()
+            transformer.set_spline(xmin, xmax)
+
         transformed = transformer(data[channels], use_spln)
+
         if return_all:
             new_data = data
         else:

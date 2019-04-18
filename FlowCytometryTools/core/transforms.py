@@ -415,7 +415,9 @@ class Transformation(BaseObject):
                 log_spacing = True
             else:
                 log_spacing = False
+
         x_spln = _x_for_spln([xmin, xmax], nx, log_spacing)
         y_spln = self(x_spln)
+
         spln = InterpolatedUnivariateSpline(x_spln, y_spln, **kwargs)
         self.spln = spln
